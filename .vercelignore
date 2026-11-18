@@ -1,5 +1,8 @@
-# Keep CLI uploads small; site mostly uses CDN media URLs
-**/storebox-media/
-**/media/
-.git/
+english/storebox-media
+spanish/storebox-media
+english/media
+spanish/media
+.git
+.env.local
 .env*.local
+node_modules
