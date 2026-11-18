@@ -4,3 +4,6 @@ images/
 
 # GitHub rejects files over 100MB; local video cache cannot be pushed
 **/storebox-media/
+
+.vercel
+.env*
