@@ -1,0 +1,520 @@
+(function () {
+  var EN = (function () {
+    var path = location.pathname.replace(/\\/g, "/");
+    if (/(?:^|\/)en(?:\/|$)/.test(path)) return true;
+    if (
+      document.querySelector(
+        '#page-en-welcome, main[data-page-id="page-en"], main[data-page-slug="/en/"]'
+      )
+    ) {
+      return true;
+    }
+    if (
+      document.querySelector(
+        '#home-welcome, main[data-page-id="home"], main[data-page-slug="/"]'
+      )
+    ) {
+      return false;
+    }
+    return /^en\b/i.test(document.documentElement.lang || "");
+  })();
+  var LOGO_CDN =
+    "https://admin.storebox.ai/media/1093c4f1-ca31-4883-a627-1f0ea88d8d40/de9d3e75-3537-4987-ac25-929093dfff55/smart-marketing-travel-mexico-logo-final-v2-color-e6f5b11ad3.webp";
+  var BOOK = "https://reserve.travelmexico.travel/";
+
+  function logoSrc() {
+    // Cropped mark — the Storebox 1920x1080 canvas has huge empty padding.
+    var path = location.pathname.replace(/\\/g, "/");
+    if (/\/en\//i.test(path)) return "../assets/tm-logo.webp";
+    return "assets/tm-logo.webp";
+  }
+  var LOGO = logoSrc();
+
+  function fixHeaderLogo() {
+    var src = logoSrc();
+    document
+      .querySelectorAll(
+        "header.MuiAppBar-root .MuiToolbar-root a img, .tm-ref-logo img, header a[aria-label] img"
+      )
+      .forEach(function (img) {
+        if (!img || img.getAttribute("data-tm-logo-fixed") === "1") return;
+        img.src = src;
+        img.setAttribute("data-tm-logo-fixed", "1");
+        img.removeAttribute("srcset");
+        img.alt = img.alt || "TravelMexico";
+        img.onerror = function () {
+          if (img.getAttribute("data-tm-logo-cdn") === "1") return;
+          img.setAttribute("data-tm-logo-cdn", "1");
+          img.src = LOGO_CDN;
+        };
+      });
+  }
+
+  function isUnifiedEnPath() {
+    return /\/en(\/|$)/i.test(location.pathname.replace(/\\/g, "/"));
+  }
+
+  function isLanguageFolderServer() {
+    // english/ or spanish/ as own docroot on local split ports, or EN page
+    // without an /en/ URL segment.
+    var host = location.hostname;
+    var port = String(location.port || "");
+    if (
+      (host === "localhost" || host === "127.0.0.1") &&
+      (port === "8080" || port === "8081")
+    ) {
+      return true;
+    }
+    return EN && !isUnifiedEnPath();
+  }
+
+  function langSwitchHref() {
+    var host = location.hostname;
+    var port = String(location.port || "");
+
+    // Local split servers used in this workspace: english :8080, spanish :8081
+    if (
+      (host === "localhost" || host === "127.0.0.1") &&
+      (port === "8080" || port === "8081")
+    ) {
+      return (
+        location.protocol +
+        "//" +
+        host +
+        ":" +
+        (EN ? "8081" : "8080") +
+        "/index.htm"
+      );
+    }
+
+    // Unified host (/en/... ↔ /)
+    if (isUnifiedEnPath()) return "/index.htm";
+    if (EN) return "../spanish/index.htm";
+    return "/en/index.htm";
+  }
+
+  function items() {
+    var lang = langSwitchHref();
+    return EN
+      ? [
+          ["My México. My Way", "/en/index.htm#page-en-experience-iframe"],
+          ["Baja California", "/en/estado/baja-california/index.htm"],
+          ["Mexican Caribbean", "/en/estado/quintana-roo/index.htm"],
+          ["Blog", "/blogs.html"],
+          ["Magazine", "/en/index.htm#page-en-magazine"],
+          ["Retirement", "https://goldenlifeabroad.com/"],
+          ["Medical Tourism", "https://hospitalitycancun.com/"],
+          ["Subscribe", "/en/index.htm#page-en-newsletter-signup"],
+          ["ES ↗", lang],
+        ]
+      : [
+          ["Mi México. A mi manera", "/index.htm#home-experience-iframe"],
+          ["Baja California", "/estado/baja-california/index.htm"],
+          ["Caribe Mexicano", "/estado/quintana-roo/index.htm"],
+          ["Blog", "/blogs.html"],
+          ["Revista", "/index.htm#home-magazine"],
+          ["Retiro", "https://goldenlifeabroad.com/"],
+          ["Turismo Médico", "https://hospitalitycancun.com/"],
+          ["Suscríbete", "/index.htm#home-newsletter-signup"],
+          ["EN ↗", lang],
+        ];
+  }
+
+  function normPath(p) {
+    p = String(p || "").replace(/\\/g, "/");
+    if (!p || p === "/") return "/index.htm";
+    return p.replace(/\/$/, "") || "/index.htm";
+  }
+
+  function samePageHref(href) {
+    // Keep absolute paths for other pages, but use "#anchor" on the current
+    // home so query-string review URLs still scroll instead of reloading.
+    var hashIdx = href.indexOf("#");
+    if (hashIdx < 0 || /^https?:\/\//i.test(href)) return href;
+    var path = href.slice(0, hashIdx) || location.pathname;
+    var hash = href.slice(hashIdx);
+    if (normPath(path) === normPath(location.pathname)) return hash;
+    return href;
+  }
+
+  // Storebox React attaches capture listeners on #root and swallows header <a>
+  // clicks before they reach the target. Handle nav on document capture
+  // (runs before #root) and force a real navigation.
+  function navAnchorFromEvent(e) {
+    var t = e.target;
+    if (!t) return null;
+    if (t.getAttribute && t.getAttribute("data-tm-nav-click") === "1") return t;
+    return t.closest ? t.closest("a[data-tm-nav-click='1']") : null;
+  }
+
+  function onNavClick(e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      return;
+    }
+    var a = navAnchorFromEvent(e);
+    if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
+    var href = a.getAttribute("href");
+    if (!href) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+    if (href.charAt(0) === "#") {
+      var id = href.slice(1);
+      var el =
+        document.getElementById(id) ||
+        document.querySelector('[data-section-id="' + id.replace(/"/g, '\\"') + '"]');
+      if (el) {
+        try {
+          history.pushState(null, "", href);
+        } catch (err) {}
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        location.hash = href;
+      }
+      return;
+    }
+    window.location.assign(a.href);
+  }
+
+  function bindNavClick(a) {
+    if (!a || a.getAttribute("data-tm-nav-click") === "1") return;
+    a.setAttribute("data-tm-nav-click", "1");
+  }
+
+  if (!window.__tmRefNavClickCapture) {
+    window.__tmRefNavClickCapture = true;
+    document.addEventListener("click", onNavClick, true);
+  }
+
+  function decorateLink(a, label, href, isLang) {
+    var finalHref = samePageHref(href);
+    // Use setAttribute so same-page "#anchor" values stay hash-only
+    // (a.href = "#…" resolves to an absolute URL and can drop ?query).
+    a.setAttribute("href", finalHref);
+    if (isLang) {
+      a.className = "tm-ref-lang";
+      a.innerHTML = label.replace(" ↗", ' <span aria-hidden="true">↗</span>');
+      a.removeAttribute("target");
+      a.removeAttribute("rel");
+      bindNavClick(a);
+      return;
+    }
+    a.className = "";
+    a.textContent = label;
+    if (/^https?:\/\//i.test(finalHref) && finalHref.indexOf(location.origin) !== 0) {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    } else {
+      a.removeAttribute("target");
+      a.removeAttribute("rel");
+      bindNavClick(a);
+    }
+  }
+
+  function fillNavLinks(nav) {
+    while (nav.firstChild) nav.removeChild(nav.firstChild);
+    var list = items();
+    list.forEach(function (it, idx) {
+      var a = document.createElement("a");
+      decorateLink(a, it[0], it[1], idx === list.length - 1);
+      nav.appendChild(a);
+    });
+  }
+
+  function syncAbsoluteHrefs() {
+    var list = items();
+    // Header / standalone only — never refill footer leftovers.
+    // Update in place when possible: rebuilding every tick was destroying
+    // anchors mid-click (mousedown on a node that then gets replaced).
+    document
+      .querySelectorAll(
+        "header .tm-ref-nav-links, .tm-ref-standalone .tm-ref-nav-links"
+      )
+      .forEach(function (nav) {
+        var anchors = nav.querySelectorAll("a");
+        if (anchors.length !== list.length) {
+          fillNavLinks(nav);
+          return;
+        }
+        list.forEach(function (it, idx) {
+          if (anchors[idx]) decorateLink(anchors[idx], it[0], it[1], idx === list.length - 1);
+        });
+      });
+    document.querySelectorAll(".tm-ref-drawer-panel").forEach(function (panel) {
+      var book = panel.querySelector(".tm-ref-drawer-book, .tm-ref-book");
+      var anchors = panel.querySelectorAll("a:not(.tm-ref-book):not(.tm-ref-drawer-book)");
+      // Rebuild drawer links if Blog is missing
+      if (anchors.length !== list.length) {
+        anchors.forEach(function (a) {
+          a.parentNode && a.parentNode.removeChild(a);
+        });
+        list.forEach(function (it, idx) {
+          var a = document.createElement("a");
+          decorateLink(a, it[0], it[1], idx === list.length - 1);
+          if (book) panel.insertBefore(a, book);
+          else panel.appendChild(a);
+        });
+      } else {
+        list.forEach(function (it, idx) {
+          if (anchors[idx]) decorateLink(anchors[idx], it[0], it[1], idx === list.length - 1);
+        });
+      }
+    });
+  }
+
+  if (window.__tmRefMatchInit) {
+    // Homepage (or earlier inject) already built the bar — normalize links sitewide.
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", syncAbsoluteHrefs);
+    } else {
+      syncAbsoluteHrefs();
+    }
+    window.addEventListener("load", syncAbsoluteHrefs);
+    return;
+  }
+  window.__tmRefMatchInit = true;
+
+  function bookLabel() {
+    return EN ? "Book Now" : "Reserva ahora";
+  }
+
+  function homeHref() {
+    if (isLanguageFolderServer()) return "index.htm";
+    return EN ? "/en/index.htm" : "/index.htm";
+  }
+
+  function setMenuOpen(open) {
+    document.body.classList.toggle("tm-ref-menu-open", !!open);
+    document.querySelectorAll(".tm-ref-menu-btn").forEach(function (btn) {
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
+  function makeBook(extraClass) {
+    var book = document.createElement("a");
+    book.className = extraClass ? "tm-ref-book " + extraClass : "tm-ref-book";
+    book.href = BOOK;
+    book.target = "_blank";
+    book.rel = "noopener noreferrer";
+    book.textContent = bookLabel();
+    return book;
+  }
+
+  function makeMenuBtn() {
+    var menuBtn = document.createElement("button");
+    menuBtn.type = "button";
+    menuBtn.className = "tm-ref-menu-btn";
+    menuBtn.setAttribute("aria-label", EN ? "Open menu" : "Abrir menú");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 7h16v2H4V7zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/></svg>';
+    menuBtn.addEventListener("click", function () {
+      setMenuOpen(!document.body.classList.contains("tm-ref-menu-open"));
+    });
+    return menuBtn;
+  }
+
+  function ensureDrawer() {
+    if (document.querySelector(".tm-ref-drawer")) return;
+    var drawer = document.createElement("div");
+    drawer.className = "tm-ref-drawer";
+    drawer.innerHTML =
+      '<button type="button" class="tm-ref-drawer-backdrop" aria-label="' +
+      (EN ? "Close menu" : "Cerrar menú") +
+      '"></button>' +
+      '<div class="tm-ref-drawer-panel" role="dialog" aria-modal="true" aria-label="' +
+      (EN ? "Menu" : "Menú") +
+      '">' +
+      '<div class="tm-ref-drawer-head"><strong>TravelMexico</strong><button type="button" class="tm-ref-drawer-close" aria-label="' +
+      (EN ? "Close" : "Cerrar") +
+      '">×</button></div>' +
+      "</div>";
+    var panel = drawer.querySelector(".tm-ref-drawer-panel");
+    var list = items();
+    list.forEach(function (it, idx) {
+      var a = document.createElement("a");
+      decorateLink(a, it[0], it[1], idx === list.length - 1);
+      panel.appendChild(a);
+    });
+    panel.appendChild(makeBook("tm-ref-drawer-book"));
+    document.body.appendChild(drawer);
+    drawer.addEventListener("click", function (e) {
+      if (
+        e.target.closest(".tm-ref-drawer-backdrop") ||
+        e.target.closest(".tm-ref-drawer-close")
+      ) {
+        setMenuOpen(false);
+      }
+      if (e.target.closest(".tm-ref-drawer-panel a")) setMenuOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setMenuOpen(false);
+    });
+  }
+
+  function mountStandalone() {
+    if (document.querySelector(".tm-ref-standalone")) return true;
+
+    var old = document.querySelector(".tmw-nav");
+    if (old && old.parentNode) old.parentNode.removeChild(old);
+
+    var header = document.createElement("header");
+    header.className = "tm-ref-standalone";
+    header.setAttribute("role", "banner");
+
+    var toolbar = document.createElement("div");
+    toolbar.className = "tm-ref-toolbar";
+
+    var logo = document.createElement("a");
+    logo.className = "tm-ref-logo";
+    logo.href = homeHref();
+    logo.setAttribute("aria-label", "TravelMexico");
+    logo.innerHTML =
+      '<img src="' + LOGO + '" alt="TravelMexico" width="220" height="42">';
+    bindNavClick(logo);
+
+    var nav = document.createElement("nav");
+    nav.className = "tm-ref-nav-links";
+    nav.setAttribute("aria-label", EN ? "Primary" : "Principal");
+    fillNavLinks(nav);
+
+    var actions = document.createElement("div");
+    actions.className = "tm-ref-mobile-actions";
+    actions.appendChild(makeBook());
+    actions.appendChild(makeMenuBtn());
+
+    toolbar.appendChild(logo);
+    toolbar.appendChild(nav);
+    toolbar.appendChild(makeBook());
+    toolbar.appendChild(actions);
+    header.appendChild(toolbar);
+
+    document.body.insertBefore(header, document.body.firstChild);
+    document.body.classList.add("tm-ref-nav", "tm-ref-has-standalone");
+    return true;
+  }
+
+  function scrubToolbarStyles(toolbar) {
+    // Keep Emotion CSS working in <head>, but never leave <style> nodes in the
+    // toolbar (display:flex on :first-child used to make their text visible).
+    toolbar.querySelectorAll("style").forEach(function (styleEl) {
+      if (styleEl.parentNode === toolbar || toolbar.contains(styleEl)) {
+        try {
+          if (styleEl.textContent && !document.getElementById("tm-ref-moved-" + (styleEl.getAttribute("data-emotion") || ""))) {
+            var moved = document.createElement("style");
+            moved.id = "tm-ref-moved-" + String(styleEl.getAttribute("data-emotion") || Math.random()).replace(/\s+/g, "-");
+            moved.setAttribute("data-tm-ref-moved", "1");
+            moved.textContent = styleEl.textContent;
+            document.head.appendChild(moved);
+          }
+        } catch (e) {}
+        if (styleEl.parentNode) styleEl.parentNode.removeChild(styleEl);
+      }
+    });
+  }
+
+  function logoBoxOf(toolbar) {
+    return (
+      toolbar.querySelector(":scope > div.MuiBox-root") ||
+      toolbar.querySelector(":scope > div") ||
+      null
+    );
+  }
+
+  function enhanceMui() {
+    var toolbar = document.querySelector("header .MuiToolbar-root");
+    if (!toolbar) return false;
+    document.body.classList.add("tm-ref-nav");
+    scrubToolbarStyles(toolbar);
+    fixHeaderLogo();
+    ensureDrawer();
+
+    if (!toolbar.querySelector(".tm-ref-nav-links")) {
+      var nav = document.createElement("nav");
+      nav.className = "tm-ref-nav-links";
+      nav.setAttribute("aria-label", EN ? "Primary" : "Principal");
+      fillNavLinks(nav);
+      var logoBox = logoBoxOf(toolbar);
+      if (logoBox && logoBox.nextSibling) toolbar.insertBefore(nav, logoBox.nextSibling);
+      else toolbar.appendChild(nav);
+    }
+
+    if (!toolbar.querySelector(":scope > .tm-ref-book")) {
+      toolbar.appendChild(makeBook());
+    }
+
+    if (!toolbar.querySelector(".tm-ref-mobile-actions")) {
+      var actions = document.createElement("div");
+      actions.className = "tm-ref-mobile-actions";
+      actions.appendChild(makeBook());
+      actions.appendChild(makeMenuBtn());
+      toolbar.appendChild(actions);
+    }
+
+    toolbar.querySelectorAll("a.MuiButton-contained").forEach(function (el) {
+      el.style.setProperty("display", "none", "important");
+    });
+    return true;
+  }
+
+  function applyNav() {
+    ensureDrawer();
+    var toolbar = document.querySelector("header .MuiToolbar-root");
+    if (toolbar) {
+      scrubToolbarStyles(toolbar);
+      return enhanceMui();
+    }
+    return mountStandalone();
+  }
+
+  function run() {
+    applyNav();
+    fixHeaderLogo();
+    // Always refresh labels/hrefs so homepage inline nav seeds stay in sync.
+    syncAbsoluteHrefs();
+  }
+
+  // Run immediately when this script executes (placed after <header> in HTML).
+  run();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  }
+
+  var tries = 0;
+  var t = setInterval(function () {
+    run();
+    tries++;
+    if (tries > 120) clearInterval(t);
+  }, 100);
+  window.addEventListener("load", run);
+
+  var obs = new MutationObserver(function () {
+    if (
+      !document.body ||
+      !document.body.classList.contains("tm-ref-nav") ||
+      (!document.querySelector("header .tm-ref-nav-links") &&
+        !document.querySelector(".tm-ref-standalone .tm-ref-nav-links")) ||
+      (!document.querySelector("header .tm-ref-mobile-actions") &&
+        !document.querySelector(".tm-ref-standalone .tm-ref-mobile-actions")) ||
+      !document.querySelector("header .tm-ref-book, .tm-ref-standalone .tm-ref-book")
+    ) {
+      run();
+    }
+  });
+  function watch() {
+    try {
+      obs.observe(document.documentElement, { childList: true, subtree: true });
+    } catch (e) {
+      var root = document.querySelector("header") || document.body;
+      if (root) {
+        try {
+          obs.observe(root, { childList: true, subtree: true });
+        } catch (err) {}
+      }
+    }
+  }
+  watch();
+  setTimeout(watch, 0);
+  setTimeout(watch, 500);
+  setTimeout(watch, 2000);
+})();

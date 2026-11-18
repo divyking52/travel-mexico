@@ -1,0 +1,345 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
+
+header.MuiAppBar-root,
+.tm-ref-standalone{
+  background:#fff!important;
+  box-shadow:0 1px 0 rgba(20,55,50,.08)!important;
+  overflow:visible!important;
+}
+header.MuiAppBar-root{
+  z-index:1200!important;
+  min-height:72px!important;
+  height:auto!important;
+  position:relative!important;
+}
+header .MuiToolbar-root{
+  min-height:72px!important;
+  height:auto!important;
+  overflow:visible!important;
+}
+/* Emotion injects <style> as toolbar first-child — never force display on :first-child */
+body.tm-ref-nav header .MuiToolbar-root > style,
+body.tm-ref-nav header .MuiToolbar-root style,
+header.MuiAppBar-root style{
+  display:none!important;
+  visibility:hidden!important;
+  position:absolute!important;
+  width:0!important;
+  height:0!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+}
+/* Always hide Storebox default chrome (do not wait for body.tm-ref-nav — avoids reload FOUC) */
+header.MuiAppBar-root .MuiToolbar-root > .MuiStack-root,
+header.MuiAppBar-root .MuiToolbar-root > .MuiBox-root:has(.MuiButtonBase-root),
+header.MuiAppBar-root .MuiToolbar-root > .MuiBox-root:has(.MuiButton-root),
+header.MuiAppBar-root .MuiToolbar-root > .MuiBox-root:has(.MuiIconButton-root),
+body.tm-ref-nav header .MuiToolbar-root > .MuiStack-root,
+body.tm-ref-nav header .MuiToolbar-root > .MuiBox-root:has(.MuiButtonBase-root),
+body.tm-ref-nav header .MuiToolbar-root > .MuiBox-root:has(.MuiButton-root),
+body.tm-ref-nav header .MuiToolbar-root > .MuiBox-root:has(.MuiIconButton-root){display:none!important}
+header.MuiAppBar-root .MuiToolbar-root a.MuiButtonBase-root,
+header.MuiAppBar-root .MuiToolbar-root button.MuiButtonBase-root,
+header.MuiAppBar-root .MuiToolbar-root .MuiButton-root,
+header.MuiAppBar-root .MuiIconButton-root,
+body.tm-ref-nav header .MuiToolbar-root a.MuiButtonBase-root,
+body.tm-ref-nav header .MuiToolbar-root button.MuiButtonBase-root,
+body.tm-ref-nav header .MuiToolbar-root .MuiButton-root,
+body.tm-ref-nav header .MuiIconButton-root{display:none!important;visibility:hidden!important}
+body.tm-ref-nav header .MuiToolbar-root,
+.tm-ref-standalone .tm-ref-toolbar{
+  display:grid!important;
+  grid-template-columns:1fr auto 1fr!important;
+  align-items:center!important;
+  gap:16px!important;
+  width:100%!important;
+  max-width:100%;
+  margin:0 auto;
+  padding:8px 24px;
+  box-sizing:border-box;
+  min-height:72px;
+}
+/* Logo box only — never target :first-child (may be an Emotion <style>) */
+body.tm-ref-nav header .MuiToolbar-root > div.MuiBox-root:first-of-type{
+  justify-self:start!important;
+  min-width:0!important;
+  display:flex!important;
+  align-items:center!important;
+  overflow:visible!important;
+  max-height:none!important;
+  grid-column:1!important;
+}
+body.tm-ref-nav header .MuiToolbar-root > div.MuiBox-root:first-of-type a{
+  display:inline-flex!important;
+  align-items:center!important;
+  max-width:min(220px,52vw)!important;
+  height:56px!important;
+  overflow:visible!important;
+}
+/* Padded Storebox logo canvas — size the inner box for the real mark */
+body.tm-ref-nav header .MuiToolbar-root > div.MuiBox-root:first-of-type a > .MuiBox-root{
+  height:56px!important;
+  max-width:none!important;
+  width:auto!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  overflow:visible!important;
+}
+body.tm-ref-nav header .MuiToolbar-root > div.MuiBox-root:first-of-type img{
+  display:block!important;
+  width:auto!important;
+  max-width:min(200px,52vw)!important;
+  height:52px!important;
+  max-height:52px!important;
+  object-fit:contain!important;
+  overflow:visible!important;
+  clip-path:none!important;
+}
+body.tm-ref-nav header .MuiToolbar-root > .tm-ref-nav-links,
+.tm-ref-standalone .tm-ref-nav-links{justify-self:center!important;grid-column:2!important}
+body.tm-ref-nav header .MuiToolbar-root > .tm-ref-book,
+.tm-ref-standalone > .tm-ref-toolbar > .tm-ref-book{justify-self:end!important;grid-column:3!important}
+
+.tm-ref-standalone{
+  position:sticky;
+  top:0;
+  z-index:1200;
+  width:100%;
+  font-family:Montserrat,"DM Sans",Arial,sans-serif;
+  color:#010101;
+}
+.tm-ref-logo{
+  display:inline-flex;
+  align-items:center;
+  justify-self:start;
+  text-decoration:none;
+  max-width:min(220px,48vw);
+}
+.tm-ref-logo img{
+  display:block;
+  height:52px;
+  width:auto;
+  max-width:min(200px,52vw);
+  object-fit:contain;
+}
+
+.tm-ref-nav-links{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(10px,1.2vw,20px);
+  width:100%;
+  min-width:0;
+  padding:0;
+  flex:unset;
+}
+body.tm-ref-nav .tm-ref-nav-links{display:flex!important;visibility:visible!important}
+.tm-ref-nav-links a{
+  color:#2f3c3a!important;
+  font-family:Montserrat,"DM Sans",Arial,sans-serif!important;
+  font-size:13px!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+  line-height:1.2!important;
+  padding:6px 0!important;
+  border:0!important;
+  background:transparent!important;
+}
+.tm-ref-nav-links a:hover{color:#0089a7!important}
+.tm-ref-nav-links .tm-ref-lang{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:6px!important;
+  padding-left:18px!important;
+  margin-left:4px!important;
+  border-left:1px solid #d7dcd9!important;
+  font-weight:600!important;
+}
+.tm-ref-nav-links .tm-ref-lang span{font-size:13px!important;line-height:1!important}
+.tm-ref-book{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:44px!important;
+  padding:11px 18px!important;
+  border:1px solid #e8ee70!important;
+  border-radius:3px!important;
+  background:#e8ee70!important;
+  color:#173a38!important;
+  font-family:"DM Sans",Montserrat,Arial,sans-serif!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  letter-spacing:0!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.1)!important;
+  visibility:visible!important;
+}
+.tm-ref-book:hover{background:#f7f8aa!important;color:#173a38!important}
+.tm-ref-mobile-actions{
+  display:none!important;
+  align-items:center;
+  gap:8px;
+  justify-self:end;
+  grid-column:3;
+}
+.tm-ref-menu-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border:1px solid #d7dcd9;
+  border-radius:3px;
+  background:#fff;
+  color:#142f2b;
+  cursor:pointer;
+  padding:0;
+}
+.tm-ref-menu-btn svg{width:20px;height:20px;display:block}
+.tm-ref-drawer{display:none;position:fixed;inset:0;z-index:1400}
+body.tm-ref-menu-open .tm-ref-drawer{display:block}
+.tm-ref-drawer-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(20,47,43,.42);
+  border:0;
+  padding:0;
+  cursor:pointer;
+}
+.tm-ref-drawer-panel{
+  position:absolute;
+  top:0;
+  right:0;
+  width:min(86vw,340px);
+  height:100%;
+  background:#fff;
+  box-shadow:-12px 0 40px rgba(0,0,0,.16);
+  padding:20px 18px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  overflow:auto;
+}
+.tm-ref-drawer-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+.tm-ref-drawer-head strong{
+  font-family:Montserrat,"DM Sans",Arial,sans-serif;
+  font-size:14px;
+  color:#142f2b;
+}
+.tm-ref-drawer-close{
+  width:40px;
+  height:40px;
+  border:1px solid #d7dcd9;
+  border-radius:3px;
+  background:#fff;
+  color:#142f2b;
+  cursor:pointer;
+  font-size:22px;
+  line-height:1;
+}
+.tm-ref-drawer-panel a{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 4px;
+  border-bottom:1px solid #e7ebe6;
+  color:#2f3c3a;
+  text-decoration:none;
+  font-family:Montserrat,"DM Sans",Arial,sans-serif;
+  font-size:15px;
+  font-weight:500;
+}
+.tm-ref-drawer-panel a:last-of-type{border-bottom:0}
+.tm-ref-drawer-panel .tm-ref-drawer-book{
+  margin-top:14px;
+  justify-content:center;
+  min-height:48px;
+  border:1px solid #e8ee70;
+  border-radius:3px;
+  background:#e8ee70;
+  color:#173a38;
+  font-weight:700;
+  padding:12px 16px;
+}
+
+/* Hide legacy wellness-only nav once shared nav is present */
+body.tm-ref-nav .tmw-nav{display:none!important}
+
+@media (max-width:899px){
+  body.tm-ref-nav header .MuiToolbar-root,
+  .tm-ref-standalone .tm-ref-toolbar{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:10px!important;
+    min-height:72px!important;
+    height:auto!important;
+    padding:14px 14px!important;
+    align-items:center!important;
+    overflow:visible!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > div.MuiBox-root:first-of-type img{
+    max-height:40px!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .tm-ref-nav-links,
+  .tm-ref-standalone .tm-ref-nav-links{
+    display:none!important;
+    visibility:hidden!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > a.tm-ref-book,
+  .tm-ref-standalone > .tm-ref-toolbar > a.tm-ref-book{
+    display:none!important;
+    visibility:hidden!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .tm-ref-mobile-actions,
+  .tm-ref-standalone .tm-ref-mobile-actions{
+    display:inline-flex!important;
+    visibility:visible!important;
+    align-items:center!important;
+    align-self:center!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .tm-ref-mobile-actions .tm-ref-book,
+  .tm-ref-standalone .tm-ref-mobile-actions .tm-ref-book{
+    display:inline-flex!important;
+    visibility:visible!important;
+    min-height:40px!important;
+    height:40px!important;
+    padding:0 12px!important;
+    font-size:12px!important;
+    box-shadow:none!important;
+    box-sizing:border-box!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .tm-ref-mobile-actions .tm-ref-menu-btn{
+    width:40px!important;
+    height:40px!important;
+    flex:0 0 40px;
+    box-sizing:border-box;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .MuiBox-root:last-of-type,
+  body.tm-ref-nav header .MuiToolbar-root > .MuiStack-root,
+  body.tm-ref-nav header .MuiIconButton-root{
+    display:none!important;
+    visibility:hidden!important;
+  }
+  .tm-ref-logo img{height:40px;max-height:40px}
+}
+
+/* Never show header nav chrome inside the site footer */
+footer .tm-ref-nav-links,
+footer .tm-ref-mobile-actions,
+footer .tm-ref-book,
+section[data-layout-id="footer.default"] .tm-ref-nav-links,
+section[data-layout-id="footer.default"] .tm-ref-mobile-actions,
+section[data-layout-id="footer.default"] .tm-ref-book{
+  display:none!important;
+  visibility:hidden!important;
+}

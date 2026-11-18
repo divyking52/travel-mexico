@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tulum Wellness & Longevity | TravelMexico</title>
+  <meta name="description" content="Explore beach time, yoga, spa rituals, nature and Maya heritage in Tulum — travel and lifestyle inspiration for a slower Mexican Caribbean stay.">
+  <meta property="og:title" content="Tulum | Wellness & Longevity">
+  <meta property="og:description" content="Build a stay around beach time, yoga, spa rituals and the region's nature and Maya heritage.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style data-tm-inline="tm-tulum-wellness.css">
+:root{
+  --ink:#142f2b;
+  --ink-soft:#4a5f5a;
+  --cream:#f7f4e9;
+  --cream-deep:#efe9da;
+  --paper:#fffdf8;
+  --teal:#0f6e6a;
+  --teal-deep:#0f6e6a;
+  --lime:#e8ee70;
+  --lime-soft:#f7f8aa;
+  --yellow:#f6ef6d;
+  --line:rgba(20,47,43,.12);
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:"DM Sans",Montserrat,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body.tm-wellness{
+  margin:0;
+  color:var(--ink);
+  background:var(--cream);
+  font-family:var(--sans);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+.tmw-skip{
+  position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;
+}
+.tmw-skip:focus{
+  left:16px;top:16px;width:auto;height:auto;padding:10px 14px;background:#fff;z-index:20;border-radius:4px;
+}
+.tmw-nav{
+  position:sticky;top:0;z-index:10;
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:16px;
+  min-height:72px;
+  padding:12px clamp(18px,4vw,40px);
+  background:rgba(247,244,233,.94);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(10px);
+}
+.tmw-brand{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+}
+.tmw-brand img{height:42px;width:auto}
+.tmw-brand small{
+  display:none;
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+}
+.tmw-back{
+  justify-self:center;
+  text-decoration:none;
+  font-size:13px;font-weight:600;color:var(--ink);
+  letter-spacing:.02em;
+}
+.tmw-back:hover{color:var(--teal)}
+.tmw-nav-actions{justify-self:end;display:flex;gap:10px;align-items:center}
+.tmw-lang{
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-decoration:none;color:var(--ink-soft);
+}
+.tmw-hero{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  min-height:min(78vh,760px);
+  background:var(--cream);
+}
+.tmw-art{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:#143d36;
+}
+.tmw-art img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.03);
+  transition:transform 1.4s cubic-bezier(.16,1,.3,1);
+}
+.tmw-art:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(20,47,43,.18), transparent 42%),
+    linear-gradient(0deg, rgba(20,47,43,.22), transparent 40%);
+  pointer-events:none;
+}
+.tmw-hero.is-in .tmw-art img,
+.tmw-art.is-in img{transform:scale(1)}
+.tmw-copy{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(36px,7vw,88px) clamp(28px,5vw,72px);
+  background:var(--cream);
+}
+.tmw-kicker{
+  margin:0 0 18px;
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);
+}
+.tmw-copy h1{
+  margin:0 0 22px;
+  max-width:11ch;
+  font-family:var(--serif);
+  font-size:clamp(42px,5.8vw,72px);
+  font-weight:400;
+  line-height:.95;
+  letter-spacing:-.035em;
+  color:var(--ink);
+}
+.tmw-lede{
+  margin:0 0 28px;
+  max-width:34ch;
+  font-size:clamp(15px,1.3vw,18px);
+  line-height:1.7;
+  color:var(--ink-soft);
+}
+.tmw-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:58px;padding:17px 22px;
+  background:var(--lime);color:#173a38;text-decoration:none;
+  font-size:13px;font-weight:600;letter-spacing:0;
+  border:1px solid var(--lime);
+  border-radius:3px;
+  box-shadow:0 10px 28px rgba(0,0,0,.14);
+  transition:transform .2s ease, background-color .2s ease;
+}
+.tmw-cta:hover{background:var(--lime-soft);transform:translateY(-2px)}
+.tmw-cta span{font-size:18px;line-height:1}
+.tmw-nav-actions .tmw-cta{
+  min-height:44px;padding:11px 16px;font-size:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+}
+.tmw-section{
+  padding:clamp(56px,8vw,110px) clamp(20px,4vw,48px);
+}
+.tmw-wrap{max-width:1180px;margin:0 auto}
+.tmw-section-head{
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:clamp(18px,4vw,48px);align-items:end;margin-bottom:clamp(28px,4vw,48px);
+}
+.tmw-section-head h2{
+  margin:0;max-width:14ch;
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(34px,4.5vw,56px);line-height:.98;letter-spacing:-.03em;
+}
+.tmw-section-head p{margin:0;max-width:36ch;color:var(--ink-soft);font-size:16px;line-height:1.7}
+.tmw-pillars{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;
+}
+.tmw-pillar{
+  min-height:220px;padding:22px 18px;
+  background:var(--paper);border:1px solid var(--line);
+  display:flex;flex-direction:column;justify-content:space-between;gap:24px;
+  text-decoration:none;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.tmw-pillar:hover{
+  transform:translateY(-4px);
+  border-color:rgba(15,110,106,.35);
+  box-shadow:0 18px 40px rgba(20,47,43,.08);
+}
+.tmw-pillar strong{
+  display:block;font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:-.02em;
+}
+.tmw-pillar p{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.55}
+.tmw-pillar em{
+  font-style:normal;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);
+}
+.tmw-band{background:linear-gradient(180deg,var(--cream) 0%,#e8f3ef 100%)}
+.tmw-places{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;
+}
+.tmw-place{
+  padding:26px 24px;background:var(--paper);border:1px solid var(--line);
+}
+.tmw-place h3{
+  margin:0 0 10px;font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:-.02em;
+}
+.tmw-place p{margin:0 0 16px;color:var(--ink-soft);font-size:15px;line-height:1.6}
+.tmw-place a{
+  color:var(--teal);font-size:13px;font-weight:700;letter-spacing:.04em;text-decoration:none;
+}
+.tmw-place a:hover{text-decoration:underline;text-underline-offset:3px}
+.tmw-book{
+  display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;
+  padding:clamp(28px,4vw,44px);
+  background:#143d36;color:#fff7df;
+}
+.tmw-book h2{
+  margin:0 0 12px;font-family:var(--serif);font-weight:400;
+  font-size:clamp(32px,4vw,48px);line-height:1;letter-spacing:-.03em;
+  color:#fff7df;
+}
+.tmw-book p{margin:0;max-width:42ch;color:rgba(255,247,223,.82);font-size:15px;line-height:1.7}
+.tmw-book-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+.tmw-cta-light{
+  display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:14px 20px;
+  background:var(--lime);color:#173a38;text-decoration:none;font-weight:600;font-size:13px;
+  border:1px solid var(--lime);border-radius:3px;
+  box-shadow:0 10px 28px rgba(0,0,0,.14);
+  transition:transform .2s ease, background-color .2s ease;
+}
+.tmw-cta-light:hover{background:var(--lime-soft);transform:translateY(-2px)}
+.tmw-cta-ghost{
+  display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:14px 20px;
+  border:1px solid rgba(255,247,223,.45);color:#fff7df;text-decoration:none;font-weight:600;font-size:13px;
+  border-radius:3px;
+  transition:border-color .2s ease, color .2s ease;
+}
+.tmw-cta-ghost:hover{border-color:var(--lime);color:var(--lime)}
+.tmw-note{
+  margin-top:18px;font-size:12px;line-height:1.6;color:var(--ink-soft);
+}
+.tmw-footer{
+  padding:28px clamp(20px,4vw,48px) 40px;
+  border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;
+  color:var(--ink-soft);font-size:12px;
+}
+.tmw-footer a{color:var(--ink);font-weight:600;text-decoration:none}
+html,body.tm-wellness{overflow-x:clip;max-width:100%}
+.tmw-hero,.tmw-section,.tmw-nav,.tmw-footer{max-width:100%}
+@media (max-width:980px){
+  .tmw-hero{grid-template-columns:1fr;min-height:auto}
+  .tmw-art{min-height:min(42vh,320px);max-height:360px}
+  .tmw-art img{min-height:100%;width:100%}
+  .tmw-copy{padding:clamp(28px,6vw,40px) clamp(18px,5vw,28px)}
+  .tmw-pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tmw-section-head,.tmw-book,.tmw-places{grid-template-columns:1fr}
+  .tmw-book-actions{justify-content:flex-start}
+  .tmw-brand small{display:none}
+  .tmw-cta,.tmw-cta-light,.tmw-cta-ghost{width:100%;justify-content:center}
+  .tmw-nav-actions .tmw-cta{width:auto}
+}
+@media (max-width:640px){
+  .tmw-nav{
+    grid-template-columns:auto 1fr auto;
+    gap:8px;
+    min-height:60px;
+    padding:10px 14px;
+  }
+  .tmw-brand img{height:34px}
+  .tmw-back{
+    justify-self:start;
+    font-size:12px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:100%;
+  }
+  .tmw-nav-actions{gap:8px}
+  .tmw-lang{font-size:11px}
+  .tmw-nav-actions .tmw-cta{
+    min-height:38px;
+    padding:8px 12px;
+    font-size:11px;
+    white-space:nowrap;
+  }
+  .tmw-pillars{grid-template-columns:1fr;gap:10px}
+  .tmw-pillar{min-height:0;padding:18px 16px}
+  .tmw-pillar strong{font-size:24px}
+  .tmw-copy h1{max-width:none;font-size:clamp(34px,10vw,48px)}
+  .tmw-lede{max-width:none;font-size:15px}
+  .tmw-section{padding:clamp(40px,8vw,72px) 16px}
+  .tmw-section-head{margin-bottom:22px;gap:12px}
+  .tmw-section-head h2{max-width:none;font-size:clamp(30px,8vw,40px)}
+  .tmw-section-head p{max-width:none;font-size:15px}
+  .tmw-place{padding:20px 18px}
+  .tmw-place h3{font-size:24px}
+  .tmw-book{padding:24px 18px;gap:18px}
+  .tmw-book-actions{flex-direction:column;align-items:stretch}
+  .tmw-footer{padding:22px 16px 32px;gap:10px}
+}
+@media (max-width:380px){
+  .tmw-back{font-size:0}
+  .tmw-back:before{
+    content:"← Back";
+    font-size:12px;
+    font-weight:600;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+/* Keep above-the-fold copy visible even if IO is delayed */
+.tmw-hero .tmw-copy.tmw-reveal{opacity:1;transform:none}
+/* entrance */
+.tmw-reveal{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+.tmw-reveal.is-in{opacity:1;transform:none}
+
+</style>
+  <style data-tm-inline="tm-ref-nav.css" data-tm-site-nav="1">
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
+
+header.MuiAppBar-root,
+.tm-ref-standalone{
+  background:#fff!important;
+  box-shadow:0 1px 0 rgba(20,55,50,.08)!important;
+  overflow:visible!important;
+}
+header.MuiAppBar-root{
+  z-index:1200!important;
+  min-height:72px!important;
+  height:auto!important;
+  position:relative!important;
+}
+header .MuiToolbar-root{
+  min-height:72px!important;
+  height:auto!important;
+  overflow:visible!important;
+}
+/* Emotion injects <style> as toolbar first-child — never force display on :first-child */
+body.tm-ref-nav header .MuiToolbar-root > style,
+body.tm-ref-nav header .MuiToolbar-root style,
+header.MuiAppBar-root style{
+  display:none!important;
+  visibility:hidden!important;
+  position:absolute!important;
+  width:0!important;
+  height:0!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+}
+body.tm-ref-nav header .MuiToolbar-root > .MuiStack-root,
+body.tm-ref-nav header .MuiToolbar-root > .MuiBox-root:has(.MuiButtonBase-root),
+body.tm-ref-nav header .MuiToolbar-root > .MuiBox-root:has(.MuiButton-root),
+body.tm-ref-nav header .MuiToolbar-root > .MuiBox-root:has(.MuiIconButton-root){display:none!important}
+body.tm-ref-nav header .MuiToolbar-root a.MuiButtonBase-root,
+body.tm-ref-nav header .MuiToolbar-root button.MuiButtonBase-root,
+body.tm-ref-nav header .MuiToolbar-root .MuiButton-root,
+body.tm-ref-nav header .MuiIconButton-root{display:none!important;visibility:hidden!important}
+body.tm-ref-nav header .MuiToolbar-root,
+.tm-ref-standalone .tm-ref-toolbar{
+  display:grid!important;
+  grid-template-columns:1fr auto 1fr!important;
+  align-items:center!important;
+  gap:16px!important;
+  width:100%!important;
+  max-width:100%;
+  margin:0 auto;
+  padding:8px 24px;
+  box-sizing:border-box;
+  min-height:72px;
+}
+/* Logo box only — never target :first-child (may be an Emotion <style>) */
+body.tm-ref-nav header .MuiToolbar-root > div.MuiBox-root:first-of-type{
+  justify-self:start!important;
+  min-width:0!important;
+  display:flex!important;
+  align-items:center!important;
+  overflow:visible!important;
+  max-height:none!important;
+  grid-column:1!important;
+}
+body.tm-ref-nav header .MuiToolbar-root > div.MuiBox-root:first-of-type a{
+  display:inline-flex!important;
+  align-items:center!important;
+  max-width:min(180px,46vw)!important;
+  overflow:visible!important;
+}
+body.tm-ref-nav header .MuiToolbar-root > div.MuiBox-root:first-of-type img{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:44px!important;
+  object-fit:contain!important;
+  overflow:visible!important;
+  clip-path:none!important;
+}
+body.tm-ref-nav header .MuiToolbar-root > .tm-ref-nav-links,
+.tm-ref-standalone .tm-ref-nav-links{justify-self:center!important;grid-column:2!important}
+body.tm-ref-nav header .MuiToolbar-root > .tm-ref-book,
+.tm-ref-standalone > .tm-ref-toolbar > .tm-ref-book{justify-self:end!important;grid-column:3!important}
+
+.tm-ref-standalone{
+  position:sticky;
+  top:0;
+  z-index:1200;
+  width:100%;
+  font-family:Montserrat,"DM Sans",Arial,sans-serif;
+  color:#010101;
+}
+.tm-ref-logo{
+  display:inline-flex;
+  align-items:center;
+  justify-self:start;
+  text-decoration:none;
+  max-width:min(220px,48vw);
+}
+.tm-ref-logo img{
+  display:block;
+  height:42px;
+  width:auto;
+  max-width:100%;
+}
+
+.tm-ref-nav-links{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(10px,1.2vw,20px);
+  width:100%;
+  min-width:0;
+  padding:0;
+  flex:unset;
+}
+body.tm-ref-nav .tm-ref-nav-links{display:flex!important;visibility:visible!important}
+.tm-ref-nav-links a{
+  color:#2f3c3a!important;
+  font-family:Montserrat,"DM Sans",Arial,sans-serif!important;
+  font-size:13px!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+  line-height:1.2!important;
+  padding:6px 0!important;
+  border:0!important;
+  background:transparent!important;
+}
+.tm-ref-nav-links a:hover{color:#0089a7!important}
+.tm-ref-nav-links .tm-ref-lang{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:6px!important;
+  padding-left:18px!important;
+  margin-left:4px!important;
+  border-left:1px solid #d7dcd9!important;
+  font-weight:600!important;
+}
+.tm-ref-nav-links .tm-ref-lang span{font-size:13px!important;line-height:1!important}
+.tm-ref-book{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:44px!important;
+  padding:11px 18px!important;
+  border:1px solid #e8ee70!important;
+  border-radius:3px!important;
+  background:#e8ee70!important;
+  color:#173a38!important;
+  font-family:"DM Sans",Montserrat,Arial,sans-serif!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  letter-spacing:0!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.1)!important;
+  visibility:visible!important;
+}
+.tm-ref-book:hover{background:#f7f8aa!important;color:#173a38!important}
+.tm-ref-mobile-actions{
+  display:none!important;
+  align-items:center;
+  gap:8px;
+  justify-self:end;
+  grid-column:3;
+}
+.tm-ref-menu-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border:1px solid #d7dcd9;
+  border-radius:3px;
+  background:#fff;
+  color:#142f2b;
+  cursor:pointer;
+  padding:0;
+}
+.tm-ref-menu-btn svg{width:20px;height:20px;display:block}
+.tm-ref-drawer{display:none;position:fixed;inset:0;z-index:1400}
+body.tm-ref-menu-open .tm-ref-drawer{display:block}
+.tm-ref-drawer-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(20,47,43,.42);
+  border:0;
+  padding:0;
+  cursor:pointer;
+}
+.tm-ref-drawer-panel{
+  position:absolute;
+  top:0;
+  right:0;
+  width:min(86vw,340px);
+  height:100%;
+  background:#fff;
+  box-shadow:-12px 0 40px rgba(0,0,0,.16);
+  padding:20px 18px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  overflow:auto;
+}
+.tm-ref-drawer-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+.tm-ref-drawer-head strong{
+  font-family:Montserrat,"DM Sans",Arial,sans-serif;
+  font-size:14px;
+  color:#142f2b;
+}
+.tm-ref-drawer-close{
+  width:40px;
+  height:40px;
+  border:1px solid #d7dcd9;
+  border-radius:3px;
+  background:#fff;
+  color:#142f2b;
+  cursor:pointer;
+  font-size:22px;
+  line-height:1;
+}
+.tm-ref-drawer-panel a{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 4px;
+  border-bottom:1px solid #e7ebe6;
+  color:#2f3c3a;
+  text-decoration:none;
+  font-family:Montserrat,"DM Sans",Arial,sans-serif;
+  font-size:15px;
+  font-weight:500;
+}
+.tm-ref-drawer-panel a:last-of-type{border-bottom:0}
+.tm-ref-drawer-panel .tm-ref-drawer-book{
+  margin-top:14px;
+  justify-content:center;
+  min-height:48px;
+  border:1px solid #e8ee70;
+  border-radius:3px;
+  background:#e8ee70;
+  color:#173a38;
+  font-weight:700;
+  padding:12px 16px;
+}
+
+/* Hide legacy wellness-only nav once shared nav is present */
+body.tm-ref-nav .tmw-nav{display:none!important}
+
+@media (max-width:899px){
+  body.tm-ref-nav header .MuiToolbar-root,
+  .tm-ref-standalone .tm-ref-toolbar{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:10px!important;
+    min-height:72px!important;
+    height:auto!important;
+    padding:14px 14px!important;
+    align-items:center!important;
+    overflow:visible!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > div.MuiBox-root:first-of-type img{
+    max-height:40px!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .tm-ref-nav-links,
+  .tm-ref-standalone .tm-ref-nav-links{
+    display:none!important;
+    visibility:hidden!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > a.tm-ref-book,
+  .tm-ref-standalone > .tm-ref-toolbar > a.tm-ref-book{
+    display:none!important;
+    visibility:hidden!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .tm-ref-mobile-actions,
+  .tm-ref-standalone .tm-ref-mobile-actions{
+    display:inline-flex!important;
+    visibility:visible!important;
+    align-items:center!important;
+    align-self:center!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .tm-ref-mobile-actions .tm-ref-book,
+  .tm-ref-standalone .tm-ref-mobile-actions .tm-ref-book{
+    display:inline-flex!important;
+    visibility:visible!important;
+    min-height:40px!important;
+    height:40px!important;
+    padding:0 12px!important;
+    font-size:12px!important;
+    box-shadow:none!important;
+    box-sizing:border-box!important;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .tm-ref-mobile-actions .tm-ref-menu-btn{
+    width:40px!important;
+    height:40px!important;
+    flex:0 0 40px;
+    box-sizing:border-box;
+  }
+  body.tm-ref-nav header .MuiToolbar-root > .MuiBox-root:last-of-type,
+  body.tm-ref-nav header .MuiToolbar-root > .MuiStack-root,
+  body.tm-ref-nav header .MuiIconButton-root{
+    display:none!important;
+    visibility:hidden!important;
+  }
+  .tm-ref-logo img{height:40px;max-height:40px}
+}
+
+</style>
+  <script data-tm-inline="tm-ref-nav.js" data-tm-site-nav="1" data-tm-was-defer="1">(function () {
+  var EN = /(?:^|\/)en(?:\/|$)/.test(location.pathname.replace(/\\/g, "/"));
+  var LOGO =
+    "https://admin.storebox.ai/media/1093c4f1-ca31-4883-a627-1f0ea88d8d40/de9d3e75-3537-4987-ac25-929093dfff55/smart-marketing-travel-mexico-logo-final-v2-color-e6f5b11ad3.webp";
+  var BOOK = "https://reserve.travelmexico.travel/";
+
+  function items() {
+    return EN
+      ? [
+          ["My México. My Way", "/en/index.htm#page-en-experience-iframe"],
+          ["Baja California", "/en/estado/baja-california/index.htm"],
+          ["Mexican Caribbean", "/en/estado/quintana-roo/index.htm"],
+          ["Blog", "/blogs.html"],
+          ["Magazine", "/en/index.htm#page-en-magazine"],
+          ["Retirement", "https://goldenlifeabroad.com/"],
+          ["Medical Tourism", "https://hospitalitycancun.com/"],
+          ["Subscribe", "/en/index.htm#page-en-newsletter-signup"],
+          ["ES ↗", "/index.htm"],
+        ]
+      : [
+          ["Mi México. A mi manera", "/index.htm#home-experience-iframe"],
+          ["Baja California", "/estado/baja-california/index.htm"],
+          ["Caribe Mexicano", "/estado/quintana-roo/index.htm"],
+          ["Blog", "/blogs.html"],
+          ["Revista", "/index.htm#home-magazine"],
+          ["Retiro", "https://goldenlifeabroad.com/"],
+          ["Turismo Médico", "https://hospitalitycancun.com/"],
+          ["Suscríbete", "/index.htm#home-newsletter-signup"],
+          ["EN ↗", "/en/index.htm"],
+        ];
+  }
+
+  function normPath(p) {
+    p = String(p || "").replace(/\\/g, "/");
+    if (!p || p === "/") return "/index.htm";
+    return p.replace(/\/$/, "") || "/index.htm";
+  }
+
+  function samePageHref(href) {
+    // Keep absolute paths for other pages, but use "#anchor" on the current
+    // home so query-string review URLs still scroll instead of reloading.
+    var hashIdx = href.indexOf("#");
+    if (hashIdx < 0 || /^https?:\/\//i.test(href)) return href;
+    var path = href.slice(0, hashIdx) || location.pathname;
+    var hash = href.slice(hashIdx);
+    if (normPath(path) === normPath(location.pathname)) return hash;
+    return href;
+  }
+
+  // Storebox React attaches capture listeners on #root and swallows header <a>
+  // clicks before they reach the target. Handle nav on document capture
+  // (runs before #root) and force a real navigation.
+  function navAnchorFromEvent(e) {
+    var t = e.target;
+    if (!t) return null;
+    if (t.getAttribute && t.getAttribute("data-tm-nav-click") === "1") return t;
+    return t.closest ? t.closest("a[data-tm-nav-click='1']") : null;
+  }
+
+  function onNavClick(e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      return;
+    }
+    var a = navAnchorFromEvent(e);
+    if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
+    var href = a.getAttribute("href");
+    if (!href) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+    if (href.charAt(0) === "#") {
+      var id = href.slice(1);
+      var el =
+        document.getElementById(id) ||
+        document.querySelector('[data-section-id="' + id.replace(/"/g, '\\"') + '"]');
+      if (el) {
+        try {
+          history.pushState(null, "", href);
+        } catch (err) {}
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        location.hash = href;
+      }
+      return;
+    }
+    window.location.assign(a.href);
+  }
+
+  function bindNavClick(a) {
+    if (!a || a.getAttribute("data-tm-nav-click") === "1") return;
+    a.setAttribute("data-tm-nav-click", "1");
+  }
+
+  if (!window.__tmRefNavClickCapture) {
+    window.__tmRefNavClickCapture = true;
+    document.addEventListener("click", onNavClick, true);
+  }
+
+  function decorateLink(a, label, href, isLang) {
+    var finalHref = samePageHref(href);
+    // Use setAttribute so same-page "#anchor" values stay hash-only
+    // (a.href = "#…" resolves to an absolute URL and can drop ?query).
+    a.setAttribute("href", finalHref);
+    if (isLang) {
+      a.className = "tm-ref-lang";
+      a.innerHTML = label.replace(" ↗", ' <span aria-hidden="true">↗</span>');
+      a.removeAttribute("target");
+      a.removeAttribute("rel");
+      bindNavClick(a);
+      return;
+    }
+    a.className = "";
+    a.textContent = label;
+    if (/^https?:\/\//i.test(finalHref) && finalHref.indexOf(location.origin) !== 0) {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    } else {
+      a.removeAttribute("target");
+      a.removeAttribute("rel");
+      bindNavClick(a);
+    }
+  }
+
+  function fillNavLinks(nav) {
+    while (nav.firstChild) nav.removeChild(nav.firstChild);
+    var list = items();
+    list.forEach(function (it, idx) {
+      var a = document.createElement("a");
+      decorateLink(a, it[0], it[1], idx === list.length - 1);
+      nav.appendChild(a);
+    });
+  }
+
+  function syncAbsoluteHrefs() {
+    var list = items();
+    // Header / standalone only — never refill footer leftovers.
+    // Update in place when possible: rebuilding every tick was destroying
+    // anchors mid-click (mousedown on a node that then gets replaced).
+    document
+      .querySelectorAll(
+        "header .tm-ref-nav-links, .tm-ref-standalone .tm-ref-nav-links"
+      )
+      .forEach(function (nav) {
+        var anchors = nav.querySelectorAll("a");
+        if (anchors.length !== list.length) {
+          fillNavLinks(nav);
+          return;
+        }
+        list.forEach(function (it, idx) {
+          if (anchors[idx]) decorateLink(anchors[idx], it[0], it[1], idx === list.length - 1);
+        });
+      });
+    document.querySelectorAll(".tm-ref-drawer-panel").forEach(function (panel) {
+      var book = panel.querySelector(".tm-ref-drawer-book, .tm-ref-book");
+      var anchors = panel.querySelectorAll("a:not(.tm-ref-book):not(.tm-ref-drawer-book)");
+      // Rebuild drawer links if Blog is missing
+      if (anchors.length !== list.length) {
+        anchors.forEach(function (a) {
+          a.parentNode && a.parentNode.removeChild(a);
+        });
+        list.forEach(function (it, idx) {
+          var a = document.createElement("a");
+          decorateLink(a, it[0], it[1], idx === list.length - 1);
+          if (book) panel.insertBefore(a, book);
+          else panel.appendChild(a);
+        });
+      } else {
+        list.forEach(function (it, idx) {
+          if (anchors[idx]) decorateLink(anchors[idx], it[0], it[1], idx === list.length - 1);
+        });
+      }
+    });
+  }
+
+  if (window.__tmRefMatchInit) {
+    // Homepage (or earlier inject) already built the bar — normalize links sitewide.
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", syncAbsoluteHrefs);
+    } else {
+      syncAbsoluteHrefs();
+    }
+    window.addEventListener("load", syncAbsoluteHrefs);
+    return;
+  }
+  window.__tmRefMatchInit = true;
+
+  function bookLabel() {
+    return EN ? "Book Now" : "Reserva ahora";
+  }
+
+  function homeHref() {
+    return EN ? "/en/index.htm" : "/index.htm";
+  }
+
+  function setMenuOpen(open) {
+    document.body.classList.toggle("tm-ref-menu-open", !!open);
+    document.querySelectorAll(".tm-ref-menu-btn").forEach(function (btn) {
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
+  function makeBook(extraClass) {
+    var book = document.createElement("a");
+    book.className = extraClass ? "tm-ref-book " + extraClass : "tm-ref-book";
+    book.href = BOOK;
+    book.target = "_blank";
+    book.rel = "noopener noreferrer";
+    book.textContent = bookLabel();
+    return book;
+  }
+
+  function makeMenuBtn() {
+    var menuBtn = document.createElement("button");
+    menuBtn.type = "button";
+    menuBtn.className = "tm-ref-menu-btn";
+    menuBtn.setAttribute("aria-label", EN ? "Open menu" : "Abrir menú");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 7h16v2H4V7zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/></svg>';
+    menuBtn.addEventListener("click", function () {
+      setMenuOpen(!document.body.classList.contains("tm-ref-menu-open"));
+    });
+    return menuBtn;
+  }
+
+  function ensureDrawer() {
+    if (document.querySelector(".tm-ref-drawer")) return;
+    var drawer = document.createElement("div");
+    drawer.className = "tm-ref-drawer";
+    drawer.innerHTML =
+      '<button type="button" class="tm-ref-drawer-backdrop" aria-label="' +
+      (EN ? "Close menu" : "Cerrar menú") +
+      '"></button>' +
+      '<div class="tm-ref-drawer-panel" role="dialog" aria-modal="true" aria-label="' +
+      (EN ? "Menu" : "Menú") +
+      '">' +
+      '<div class="tm-ref-drawer-head"><strong>TravelMexico</strong><button type="button" class="tm-ref-drawer-close" aria-label="' +
+      (EN ? "Close" : "Cerrar") +
+      '">×</button></div>' +
+      "</div>";
+    var panel = drawer.querySelector(".tm-ref-drawer-panel");
+    var list = items();
+    list.forEach(function (it, idx) {
+      var a = document.createElement("a");
+      decorateLink(a, it[0], it[1], idx === list.length - 1);
+      panel.appendChild(a);
+    });
+    panel.appendChild(makeBook("tm-ref-drawer-book"));
+    document.body.appendChild(drawer);
+    drawer.addEventListener("click", function (e) {
+      if (
+        e.target.closest(".tm-ref-drawer-backdrop") ||
+        e.target.closest(".tm-ref-drawer-close")
+      ) {
+        setMenuOpen(false);
+      }
+      if (e.target.closest(".tm-ref-drawer-panel a")) setMenuOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setMenuOpen(false);
+    });
+  }
+
+  function mountStandalone() {
+    if (document.querySelector(".tm-ref-standalone")) return true;
+
+    var old = document.querySelector(".tmw-nav");
+    if (old && old.parentNode) old.parentNode.removeChild(old);
+
+    var header = document.createElement("header");
+    header.className = "tm-ref-standalone";
+    header.setAttribute("role", "banner");
+
+    var toolbar = document.createElement("div");
+    toolbar.className = "tm-ref-toolbar";
+
+    var logo = document.createElement("a");
+    logo.className = "tm-ref-logo";
+    logo.href = homeHref();
+    logo.setAttribute("aria-label", "TravelMexico");
+    logo.innerHTML =
+      '<img src="' + LOGO + '" alt="TravelMexico" width="220" height="42">';
+    bindNavClick(logo);
+
+    var nav = document.createElement("nav");
+    nav.className = "tm-ref-nav-links";
+    nav.setAttribute("aria-label", EN ? "Primary" : "Principal");
+    fillNavLinks(nav);
+
+    var actions = document.createElement("div");
+    actions.className = "tm-ref-mobile-actions";
+    actions.appendChild(makeBook());
+    actions.appendChild(makeMenuBtn());
+
+    toolbar.appendChild(logo);
+    toolbar.appendChild(nav);
+    toolbar.appendChild(makeBook());
+    toolbar.appendChild(actions);
+    header.appendChild(toolbar);
+
+    document.body.insertBefore(header, document.body.firstChild);
+    document.body.classList.add("tm-ref-nav", "tm-ref-has-standalone");
+    return true;
+  }
+
+  function scrubToolbarStyles(toolbar) {
+    // Keep Emotion CSS working in <head>, but never leave <style> nodes in the
+    // toolbar (display:flex on :first-child used to make their text visible).
+    toolbar.querySelectorAll("style").forEach(function (styleEl) {
+      if (styleEl.parentNode === toolbar || toolbar.contains(styleEl)) {
+        try {
+          if (styleEl.textContent && !document.getElementById("tm-ref-moved-" + (styleEl.getAttribute("data-emotion") || ""))) {
+            var moved = document.createElement("style");
+            moved.id = "tm-ref-moved-" + String(styleEl.getAttribute("data-emotion") || Math.random()).replace(/\s+/g, "-");
+            moved.setAttribute("data-tm-ref-moved", "1");
+            moved.textContent = styleEl.textContent;
+            document.head.appendChild(moved);
+          }
+        } catch (e) {}
+        if (styleEl.parentNode) styleEl.parentNode.removeChild(styleEl);
+      }
+    });
+  }
+
+  function logoBoxOf(toolbar) {
+    return (
+      toolbar.querySelector(":scope > div.MuiBox-root") ||
+      toolbar.querySelector(":scope > div") ||
+      null
+    );
+  }
+
+  function enhanceMui() {
+    var toolbar = document.querySelector("header .MuiToolbar-root");
+    if (!toolbar) return false;
+    document.body.classList.add("tm-ref-nav");
+    scrubToolbarStyles(toolbar);
+    ensureDrawer();
+
+    if (!toolbar.querySelector(".tm-ref-nav-links")) {
+      var nav = document.createElement("nav");
+      nav.className = "tm-ref-nav-links";
+      nav.setAttribute("aria-label", EN ? "Primary" : "Principal");
+      fillNavLinks(nav);
+      var logoBox = logoBoxOf(toolbar);
+      if (logoBox && logoBox.nextSibling) toolbar.insertBefore(nav, logoBox.nextSibling);
+      else toolbar.appendChild(nav);
+    }
+
+    if (!toolbar.querySelector(":scope > .tm-ref-book")) {
+      toolbar.appendChild(makeBook());
+    }
+
+    if (!toolbar.querySelector(".tm-ref-mobile-actions")) {
+      var actions = document.createElement("div");
+      actions.className = "tm-ref-mobile-actions";
+      actions.appendChild(makeBook());
+      actions.appendChild(makeMenuBtn());
+      toolbar.appendChild(actions);
+    }
+
+    toolbar.querySelectorAll("a.MuiButton-contained").forEach(function (el) {
+      el.style.setProperty("display", "none", "important");
+    });
+    return true;
+  }
+
+  function applyNav() {
+    ensureDrawer();
+    var toolbar = document.querySelector("header .MuiToolbar-root");
+    if (toolbar) {
+      scrubToolbarStyles(toolbar);
+      return enhanceMui();
+    }
+    return mountStandalone();
+  }
+
+  function run() {
+    applyNav();
+    // Always refresh labels/hrefs so homepage inline nav seeds stay in sync.
+    syncAbsoluteHrefs();
+  }
+
+  // Run immediately when this script executes (placed after <header> in HTML).
+  run();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  }
+
+  var tries = 0;
+  var t = setInterval(function () {
+    run();
+    tries++;
+    if (tries > 120) clearInterval(t);
+  }, 100);
+  window.addEventListener("load", run);
+
+  var obs = new MutationObserver(function () {
+    if (
+      !document.body ||
+      !document.body.classList.contains("tm-ref-nav") ||
+      (!document.querySelector("header .tm-ref-nav-links") &&
+        !document.querySelector(".tm-ref-standalone .tm-ref-nav-links")) ||
+      (!document.querySelector("header .tm-ref-mobile-actions") &&
+        !document.querySelector(".tm-ref-standalone .tm-ref-mobile-actions")) ||
+      !document.querySelector("header .tm-ref-book, .tm-ref-standalone .tm-ref-book")
+    ) {
+      run();
+    }
+  });
+  function watch() {
+    try {
+      obs.observe(document.documentElement, { childList: true, subtree: true });
+    } catch (e) {
+      var root = document.querySelector("header") || document.body;
+      if (root) {
+        try {
+          obs.observe(root, { childList: true, subtree: true });
+        } catch (err) {}
+      }
+    }
+  }
+  watch();
+  setTimeout(watch, 0);
+  setTimeout(watch, 500);
+  setTimeout(watch, 2000);
+})();
+</script>
+</head>
+<body class="tm-wellness">
+  <a class="tmw-skip" href="#main">Skip to content</a>
+
+  <main id="main">
+    <section class="tmw-hero" aria-label="Tulum wellness introduction">
+      <div class="tmw-art">
+        <img
+          src="https://admin.storebox.ai/media/1093c4f1-ca31-4883-a627-1f0ea88d8d40/457c7692-d08f-44f4-ab1f-abd3e1f01c8b/mexico-cabana-hero-v1.png"
+          alt="Caribbean beach viewed from a thatched cabana by the sea"
+          width="1200"
+          height="1500"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="tmw-copy tmw-reveal">
+        <p class="tmw-kicker">Tulum · Wellness &amp; Longevity</p>
+        <h1>Your journey, at a different pace.</h1>
+        <p class="tmw-lede">Build a stay around beach time, yoga, spa rituals and the region’s nature and Maya heritage. Choose the pace and experiences that suit you.</p>
+        <a class="tmw-cta" href="#explore">Explore the destination <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="tmw-section" id="explore" aria-labelledby="explore-title">
+      <div class="tmw-wrap">
+        <div class="tmw-section-head tmw-reveal">
+          <h2 id="explore-title">Five ways to feel Tulum.</h2>
+          <p>Move through the coast at your own rhythm — from soft mornings on the sand to quiet spa rituals and living Maya landscapes.</p>
+        </div>
+        <div class="tmw-pillars">
+          <a class="tmw-pillar tmw-reveal" href="../tulum/index.htm">
+            <div>
+              <strong>Beach time</strong>
+              <p>Long shorelines, soft light and space to do less — with the Caribbean close at hand.</p>
+            </div>
+            <em>Coast</em>
+          </a>
+          <a class="tmw-pillar tmw-reveal" href="#rituals">
+            <div>
+              <strong>Yoga</strong>
+              <p>Open-air practice and quieter mornings that set the tone for the rest of the day.</p>
+            </div>
+            <em>Practice</em>
+          </a>
+          <a class="tmw-pillar tmw-reveal" href="#rituals">
+            <div>
+              <strong>Spa rituals</strong>
+              <p>Steam, sauna, cold plunge and spa menus listed by coastal hotels — for rest, not medical care.</p>
+            </div>
+            <em>Restore</em>
+          </a>
+          <a class="tmw-pillar tmw-reveal" href="../maya-ka-an/index.htm">
+            <div>
+              <strong>Nature</strong>
+              <p>Cenotes, jungle edges and biosphere calm beyond the beach clubs.</p>
+            </div>
+            <em>Landscape</em>
+          </a>
+          <a class="tmw-pillar tmw-reveal" href="../tulum/index.htm">
+            <div>
+              <strong>Maya heritage</strong>
+              <p>Cliffside archaeology and living culture that give the coast its deeper story.</p>
+            </div>
+            <em>Culture</em>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tmw-section tmw-band" id="rituals" aria-labelledby="rituals-title">
+      <div class="tmw-wrap">
+        <div class="tmw-section-head tmw-reveal">
+          <h2 id="rituals-title">Spa &amp; wellness inspiration.</h2>
+          <p>Editorial selection from official hotel sources re-checked 16 November 2026 — not a ranking or partnership. Services below are listed as travel lifestyle options.</p>
+        </div>
+        <div class="tmw-places">
+          <article class="tmw-place tmw-reveal">
+            <h3>Be Tulum / Yäan Spa</h3>
+            <p>Steam, sauna and pools; spa rituals and wellbeing programming listed on the hotel’s official spa pages.</p>
+            <a href="https://www.betulum.com/yaan-spa" target="_blank" rel="noopener noreferrer">Visit source ↗</a>
+          </article>
+          <article class="tmw-place tmw-reveal">
+            <h3>Ahau Tulum</h3>
+            <p>Open-air yoga, temazcal and Mayan clay ritual experiences listed by the hotel.</p>
+            <a href="https://www.ahautulum.com/wellness" target="_blank" rel="noopener noreferrer">Visit source ↗</a>
+          </article>
+          <article class="tmw-place tmw-reveal">
+            <h3>The Beach Tulum / Naj Naay Spa</h3>
+            <p>Sauna, steam room, Scottish shower and hot and cold pools listed for hotel guests.</p>
+            <a href="https://www.thebeach-tulum.com/spa/" target="_blank" rel="noopener noreferrer">Visit source ↗</a>
+          </article>
+          <article class="tmw-place tmw-reveal">
+            <h3>Conrad Tulum Riviera Maya</h3>
+            <p>Sauna, steam, cold plunge, massages and spa rituals. Chemuyil / Tulkal, outside Tulum town.</p>
+            <a href="https://www.hilton.com/en/hotels/cuncici-conrad-tulum-riviera-maya/spa/" target="_blank" rel="noopener noreferrer">Visit source ↗</a>
+          </article>
+        </div>
+        <p class="tmw-note tmw-reveal">Wellness here is travel and lifestyle inspiration — not medical care, clinical treatment or a promise of longevity. Confirm amenities and availability with each property. Rates and inventory require validation in the TravelMexico reservations engine. Hero image from the TravelMexico media library.</p>
+      </div>
+    </section>
+
+    <section class="tmw-section" aria-labelledby="book-title">
+      <div class="tmw-wrap">
+        <div class="tmw-book tmw-reveal">
+          <div>
+            <h2 id="book-title">Ready when you are.</h2>
+            <p>Keep checkout in the existing TravelMexico reservations engine. Shape your guide first, then book the stay that fits.</p>
+          </div>
+          <div class="tmw-book-actions">
+            <a class="tmw-cta-light" href="https://reserve.travelmexico.travel/" target="_blank" rel="noopener noreferrer">Explore hotels &amp; book →</a>
+            <a class="tmw-cta-ghost" href="../tulum/index.htm">Open the Tulum guide</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="tmw-footer">
+    <span>TravelMexico · Tulum Wellness &amp; Longevity · Editorial pilot</span>
+    <span><a href="../../index.htm">Home</a> · <a href="../../estado/quintana-roo/index.htm">Mexican Caribbean</a> · <a href="../tulum/index.htm">Tulum guide</a></span>
+  </footer>
+
+  <script data-tm-inline="tm-tulum-wellness.js" data-tm-was-defer="1">
+(function () {
+  var nodes = document.querySelectorAll(".tmw-reveal, .tmw-art, .tmw-hero");
+  if (!nodes.length) return;
+  if (!("IntersectionObserver" in window)) {
+    nodes.forEach(function (n) {
+      n.classList.add("is-in");
+    });
+    return;
+  }
+  var io = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+  );
+  nodes.forEach(function (n) {
+    io.observe(n);
+  });
+})();
+
+</script>
+</body>
+</html>

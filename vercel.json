@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/spanish/index.htm" },
+    { "source": "/en", "destination": "/english/index.htm" },
+    { "source": "/en/(.*)", "destination": "/english/$1" },
+    { "source": "/es", "destination": "/spanish/index.htm" },
+    { "source": "/es/(.*)", "destination": "/spanish/$1" }
+  ],
+  "cleanUrls": false,
+  "trailingSlash": false
+}
